@@ -36,7 +36,13 @@ function TabsetCtrl($scope, $element) {
   };
 
   ctrl.removeTab = function removeTab(tab) {
-    var index = tabs.indexOf(tab);
+    var index=-1, i=0;
+    for (; i<tabs.length; i++) {
+        if ( angular.equals(tab, tabs[i]) ) {
+            index = i;
+            break;
+        }
+    }
     //Select a new tab if the tab to be removed is selected
     if (tab.active && tabs.length > 1) {
       //If this is the last tab, select the previous tab. else, the next tab.

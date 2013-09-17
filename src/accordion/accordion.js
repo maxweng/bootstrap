@@ -33,7 +33,13 @@ angular.module('ui.bootstrap.accordion', ['ui.bootstrap.collapse'])
 
   // This is called from the accordion-group directive when to remove itself
   this.removeGroup = function(group) {
-    var index = this.groups.indexOf(group);
+    var index=-1, i=0;
+    for (; i<this.groups.length; i++) {
+        if ( angular.equals(group, this.groups[i]) ) {
+            index = i;
+            break;
+        }
+    }
     if ( index !== -1 ) {
       this.groups.splice(this.groups.indexOf(group), 1);
     }
